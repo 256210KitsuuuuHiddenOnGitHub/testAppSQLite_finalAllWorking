@@ -40,16 +40,24 @@ namespace testAppSQLite
             Button submit = FindViewById<Button>(Resource.Id.btnSubmit);
             Button retrieve = FindViewById<Button>(Resource.Id.retAns);
             TextView txRes = FindViewById<TextView>(Resource.Id.dispResult);
-            //Get RG and Rd to get Value
-            RadioGroup rg = FindViewById<RadioGroup>(Resource.Id.questionOne);
-            RadioButton rd = FindViewById<RadioButton>(rg.CheckedRadioButtonId);
-
-            //Store Answer
-            string ans = rd.Text.ToString();
 
             //Delegate Command, auto increment(Create Database)
+            //Insert answer Here, outside do answer withot user knowing it
             submit.Click += delegate
             {
+                //Get RG and Rd to get Value
+                //Question 1
+                RadioGroup rg = FindViewById<RadioGroup>(Resource.Id.questionOne);
+                RadioButton rd = FindViewById<RadioButton>(rg.CheckedRadioButtonId);
+
+                //Question 2
+                RadioGroup rg2 = FindViewById<RadioGroup>(Resource.Id.questionTwo);
+                RadioButton rd2 = FindViewById<RadioButton>(rg2.CheckedRadioButtonId);
+
+                //Store Answer
+                string ans = rd.Text.ToString();
+                string ans2 = rd2.Text.ToString();
+
                 //Create Connection
                 db = new SQLiteConnection(pathCombo);
 
@@ -57,7 +65,7 @@ namespace testAppSQLite
                 db.CreateTable<surveys>();
 
                 //Insert Surveys Here
-                surveys ss = new surveys(ans);
+                surveys ss = new surveys(ans,ans2);
 
                 //Insert to Database
                 db.Insert(ss);
@@ -70,10 +78,14 @@ namespace testAppSQLite
                 db = new SQLiteConnection(pathCombo);
 
                 //Connect to Table
-                var resultHere = db.Table<surveys>();
+                var resultHere = db.Table<surveys>().ToList();
 
                 //Retrieve Info
-                txRes.Text = resultHere.ToString();
+                for (int loop=0; loop<resultHere.Count;loop++)
+                {
+                    txRes.Text = resultHere[loop].ToString();
+                }
+
             };
             
 

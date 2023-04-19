@@ -45,7 +45,7 @@
         android:id="@+id/btnSubmit" />
     <TextView
         android:text="Result is: ---"
-        android:layout_marginTop="470px"
+        android:layout_marginTop="650px"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,5 +56,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/retAns" />
+
+    <TextView
+        android:text="2.) Are You Gae?"
+        android:layout_marginLeft="300px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    <RadioGroup
+        android:layout_marginTop="28px"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_marginLeft="300px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/questionTwo">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Yes, I am"
+            android:id="@+id/radioButton4" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maybe Im Gae"
+            android:id="@+id/radioButton5" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No, Im Gae"
+            android:id="@+id/radioButton6" />
+    </RadioGroup>
+
 
 </RelativeLayout>
